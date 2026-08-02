@@ -22,7 +22,6 @@ jobs:
 
       - name: Create and Deploy Lambda Payload
         run: |
-          # Create lambda handler file
           cat << 'EOF' > lambda_function.py
           import json
           import boto3
@@ -56,7 +55,6 @@ jobs:
               }
           EOF
 
-          # Zip and update the Lambda function
           zip function.zip lambda_function.py
           aws lambda update-function-code --function-name nslookupv2 --zip-file fileb://function.zip
           echo "Lambda function updated successfully!"
